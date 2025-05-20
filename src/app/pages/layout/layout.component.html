@@ -1,0 +1,55 @@
+<header>
+  <mat-toolbar class="!bg-blue-400 flex items-center">
+    <!-- Left: Menu Button -->
+    <button
+      (click)="drawer.toggle()"
+      mat-icon-button
+      class="!text-white"
+      aria-label="Toggle navigation menu"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <!-- Center: Title -->
+    <span class="!text-white text-lg font-semibold ml-2">
+      Employee Management System
+    </span>
+
+    <!-- Spacer to push logout to right -->
+    <span class="flex-grow"></span>
+
+    <!-- Right: Logout Button -->
+    <span class="text-white mr-4">Login User Name</span>
+    <button
+      class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
+      >
+      Logout
+    </button>
+  </mat-toolbar>
+</header>
+
+<mat-drawer-container class="h-screen">
+  <mat-drawer
+    #drawer
+    class="!w-[250px] bg-white shadow-lg"
+    mode="side"
+    [opened]="true"
+  >
+    <div class="flex flex-col items-center gap-4 text-blue-700 p-4 h-full justify-center">
+      <a routerLink="/home">Dashboard</a>
+      <a routerLink="/employee">Employee</a>
+      <a routerLink="/department">Department</a>
+      <a routerLink="/designation">Designation</a>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <main class="min-h-screen bg-gray-200 p-4">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+<footer class="flex flex-col items-center">All rights reserved by TechStdio 2025</footer>
+
+<!-- (click)="logout()" -->

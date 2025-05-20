@@ -1,0 +1,20 @@
+<div class="parent">
+    <div class="login-card">
+        <h2>Please Login Here</h2>
+        <form (ngSubmit)="OnSubmit()">
+            <div class="input-group">
+                <i data-lucide="mail"></i>
+                <input type="email" placeholder="Enter Your Email "  [(ngModel)]="loginModel.email"
+                name="email" id="email" required>
+            </div>
+            <div class="input-group">
+                <!-- <label class="form-label" for="passwordInput">Password</label> -->
+              <input [type]="showPassword ? 'text' : 'password'" class="form-control" placeholder="Enter Password" [(ngModel)]="loginModel.password"
+                name="password" id="passwordInput" />
+              <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="togglePasswordVisibility()"
+                style="position: absolute; top: 44px; right: 15px; cursor: pointer;"></i>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
