@@ -34,12 +34,23 @@ export class EmployeeComponent {
       this.originalEmployeeList = result;
     });
   }
+
+submitSave(){
+  if(this.formData.Id == 0){
+this.addEmployee();
+  }
+  else{
+this.updateEmp();
+  }
+}
+
   addEmployee(){
-    debugger;
     this.httpService.addEmployee(this.formData).subscribe({
       next: (result: any) => {
-        console.log('Employee added:', result);
+        //console.log('Employee added:', result);
+        alert('Record Saved.');
         this.isFormOpen = false;
+        this.formData = new IEmployee();
         this.getLatestData();
       },
     })
@@ -56,17 +67,23 @@ export class EmployeeComponent {
   }
   isEdit = false;
   editEmployee(employee: IEmployee){
+    this.formData = employee;
+    this.isFormOpen = true;
     
   }
-  // updateEmployee(){
-  //   this.httpService.updateEmployee(this.editId, this.EmployeeName)
-  //   .subscribe(() => {
-  //     alert('Record Saved.');
-  //     this.isFormOpen = false;
-  //     this.getLatestData();
-  //     this.editId = 0;
-  //   })
-  // }
+
+updateEmp(){
+  this.httpService.editEmployee(this.formData)
+    .subscribe(() => {
+      alert('Record Updated.');
+      this.isFormOpen = false;
+      this.formData = new IEmployee();
+      this.getLatestData();
+      this.isEdit = false;
+      
+    });
+}
+
 }
 
 

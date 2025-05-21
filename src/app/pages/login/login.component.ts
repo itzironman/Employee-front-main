@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   // OnSubmit(){
-  //   this.htgfdghfdhyttpService.Login(this.loginModel.email,this.loginModel.password).subscribe((data:any)=>{
+  //   this.httpService.Login(this.loginModel.email,this.loginModel.password).subscribe((data:any)=>{
   //     this.router.navigate(['/home']);
       
   //   })

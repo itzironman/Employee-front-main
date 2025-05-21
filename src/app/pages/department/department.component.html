@@ -2,7 +2,7 @@
 <div class="p-8">
     @if(!isFormOpen){
     <div class="flex justify-between mb-2">
-        <h1 class="text-xl font-semibold">Department List</h1>
+        <h1 class="text-xl font-semibold align-center">Department List</h1>
         <button mat-flat-button class="bg-green-500" (click)="isFormOpen=true">Add</button>
     </div>
     <table class="table-auto border-collapse">
@@ -16,11 +16,11 @@
         <tbody>
         @for(item of department; track $index) {
             <tr>
-                <td>{{item.Id}}</td>
+                <td>{{item.serial}}</td>
                 <td>{{item.DepartmentName}}</td>
                 <td class="flex gap-4">
-                    <button mat-flat-button class="bg-blue-300">Edit</button>
-                    <button mat-flat-button class="bg-red-500">Delete</button>
+                    <button mat-flat-button class="bg-blue-300" (click)="editDepartment(item)">Edit</button>
+                    <button mat-flat-button class="bg-red-500" (click)="deleteDept(item.Id)">Delete</button>
                 </td>
             </tr>
         }
@@ -30,10 +30,18 @@
 
     <div class="flex">
         <form class="w-[300px] m-auto shadow-lg py-6 px-16">
-            <h3 class="text-xl font-semibold mb-2">Add Department</h3>
+            <button type="submit"
+            (click)="isFormOpen=false"
+            mat-flat-button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-200">Back</button>
+            <h3 class="text-xl font-semibold align-center mb-2">Add Department</h3>
             <!-- <mat-form-field class="w-full">
                 <mat-label>Input Department ID</mat-label>
                 <input matInput [(ngModel)]="formData.id" />
+              </mat-form-field> -->
+
+              <!-- <mat-form-field class="w-full">
+                <mat-label>Department Id</mat-label>
+                <input matInput name="DepartmentId" [(ngModel)]="formData.id" />
               </mat-form-field> -->
 
             <mat-form-field class="w-full">
@@ -45,7 +53,7 @@
         </form>
         <div class="w-full justify-center">
             <button type="button"
-            (click)="addDepartment()"
+            (click)="submitSave()"
             mat-flat-button class="bg-green-300">Submit</button>
         </div>  
     </div>
