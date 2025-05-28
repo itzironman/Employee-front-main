@@ -3,7 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { first } from 'rxjs';
 import { IDepartment } from '../types/department';
 import { IDesignation } from '../types/designation';
-import { IEmployee } from '../types/employee';
+import { IEmployee, Master } from '../types/employee';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +11,8 @@ import { IEmployee } from '../types/employee';
 export class HttpService {
 
   apiUrl = 'https://localhost:7272';
-  constructor(
-    private http: HttpClient
-  ) {
+
+  constructor(private http: HttpClient) {
 
   }
 
@@ -67,5 +66,15 @@ export class HttpService {
     //const body = { email, password };
     return this.http.post<any>(this.apiUrl + '/api/User/Login?email=${email}&password=${pass}', { withCredentials: true }).pipe(first());
   }
-  
+  // getShiftEmpList(){
+  //   return this.http.get(this.apiUrl + "", data, { withCredentials: true }).pipe(first());
+  // }
+
+  getShiftData(){
+    return this.http.get(this.apiUrl + "/api/shift/GetShift", { withCredentials: true }).pipe(first());
+  }
+
+  saveShift(data: Master){
+    return this.http.post(this.apiUrl + "/api/shiftEmployeeDetails/SaveShiftEmployeeDetails",data, { withCredentials: true }).pipe(first());
+  }
 }
