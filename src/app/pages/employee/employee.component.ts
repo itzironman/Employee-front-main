@@ -83,6 +83,15 @@ updateEmp(){
       
     });
 }
+deleteEmp(id: number){
+  if(confirm('Are you sure you want to delete this Employee?')){
+    this.httpService.deleteEmployee(id)
+      .subscribe(() => {
+        alert('Record Deleted.');
+        this.getLatestData();
+      });
+  }
+}
 
 }
 

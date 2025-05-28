@@ -28,14 +28,51 @@ getLatestData(){
     
   });
 }
+  submitSave() {
+    if (this.formData.Id == 0) {
+      this.addDesignation();
+    }
+    else {
+      this.updateDesig();
+    }
+  }
 
 addDesignation(){
   this.httpService.addDesignation(this.formData).subscribe({
     next: (result: any) => {
-      console.log('Designation added:', result);
+      //console.log('Designation added:', result);
+      alert('Record Saved.');
       this.isFormOpen = false;
+      this.formData = new IDesignation();
       this.getLatestData();
     },
   })
+}
+isEdit = false;
+editDesignation(designation: IDesignation){
+  this.formData = designation;
+  this.isFormOpen = true;
+}
+
+updateDesig(){
+  debugger;
+  this.httpService.editDesignation(this.formData)
+  .subscribe(() => {
+    alert('Record Updated.');
+    this.isFormOpen = false;
+    this.formData = new IDesignation();
+    this.getLatestData();
+    this.isEdit = false;
+  })
+}
+
+deleteDesig(id: number){
+  if(confirm('Are you sure you want to delete Designation?')){
+    this.httpService.deleteDesignation(id)
+    .subscribe(() => {
+      alert('Record Deleted.');
+      this.getLatestData();
+    });
+  }
 }
 }

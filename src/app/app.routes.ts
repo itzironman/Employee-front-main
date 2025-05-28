@@ -5,6 +5,7 @@ import { DepartmentComponent } from './pages/department/department.component';
 import { DesignationComponent } from './pages/designation/designation.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LayoutComponent } from './pages/layout/layout.component';
+import { ShiftEmployeeComponent } from './pages/shift-employee/ShiftEmployeeComponent';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,10 @@ export const routes: Routes = [
             {
                 path:'designation',
                 component:DesignationComponent,
+            },
+            {
+                path: 'shiftEmployee',
+                component:ShiftEmployeeComponent,
             }
         ]
     }

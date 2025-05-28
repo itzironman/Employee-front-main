@@ -38,7 +38,7 @@
                 <td>{{item.DesignationName}}</td>
                 <td class="flex gap-4">
                     <button mat-flat-button (click)="editEmployee(item)">Edit</button>
-                    <button mat-flat-button class="bg-red-500">Delete</button>
+                    <button mat-flat-button class="bg-red-500" (click)="deleteEmp(item.Id)" >Delete</button>
                 </td>
             </tr>
         }
