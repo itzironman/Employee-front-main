@@ -1,5 +1,6 @@
 <form #mainForm="ngForm" (ngSubmit)="submitForm()">
   <div>
+    <p class="text-center">Customer Log Form</p>
     <select class="form-select" aria-label="Default select example" [(ngModel)]="formData.shiftId" name = "shiftId">
       <option *ngFor="let shift of shiftData" [value]="shift.id">{{ shift.shiftName }}</option>
       <option selected>Shift</option>
