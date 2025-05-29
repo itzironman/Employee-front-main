@@ -16,7 +16,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 })
 export class LayoutComponent implements OnInit {
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    //throw new Error('Method not implemented.');
   }
   title = 'Employee-front-main';
 }

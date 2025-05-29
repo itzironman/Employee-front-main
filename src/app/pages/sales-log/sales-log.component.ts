@@ -25,19 +25,52 @@ export class SalesLogComponent implements OnInit {
     
   }
 
-  ngOnInit(){
-      
+  ngOnInit(): void {
+      this.getShift();
+      this.dataService.getEmployee();
+      this.getEmpData();
     }
 
   submitForm(){
+    const mainData = this.formData;
+    //debugger;
+    this.dataService.saveSales(mainData).subscribe({
+      next: (result: any) => {
+        alert('Sales data recorded.');
 
+        this.formData = new salesMaster();
+      }
+    })
   }
 
   addEntry(){
+    if(this.entry.time && this.entry.salesName && this.entry.remarks) {
+   
+      // var times = this.entry.time as any;
+      // var hours = times.split(':')[0];
+      // var min = times.split(':')[1];
+      // this.entry.time = {hours:Number(hours),minutes :Number(min)}
+    
+     this.entry.time = this.entry.time + ':00'
+      this.formData.salesDetails.push({ ...this.entry });
 
+      this.entry = new salesDetails();
+    }
   }
 
-  removeEntry(){
-    
+  removeEntry(index: number){
+    this.formData.salesDetails.splice(index, 1);
+  }
+
+  getShift(){
+    this.dataService.getShiftData().subscribe((data: any) => {
+      this.shiftData = data;
+    })
+  }
+
+  getEmpData(){
+    this.dataService.getEmployee().subscribe((data:any) => {
+      this.empData = data;
+    })
   }
 }

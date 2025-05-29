@@ -38,7 +38,7 @@ export class salesMaster{   //sales log
 }
 
 export class salesDetails{      //sales log
-    time: string = '';
+    time: string = ""
     salesName: string = '';
     remarks: string = ''
 }

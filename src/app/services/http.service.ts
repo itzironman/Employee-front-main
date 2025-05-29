@@ -3,7 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { first } from 'rxjs';
 import { IDepartment } from '../types/department';
 import { IDesignation } from '../types/designation';
-import { IEmployee, Master } from '../types/employee';
+import { IEmployee, Master, salesMaster } from '../types/employee';
 
 @Injectable({
   providedIn: 'root'
@@ -75,6 +75,10 @@ export class HttpService {
   }
 
   saveShift(data: Master){
-    return this.http.post(this.apiUrl + "/api/shiftEmployeeDetails/SaveShiftEmployeeDetails",data, { withCredentials: true }).pipe(first());
+    return this.http.post(this.apiUrl + "/api/shiftEmployeeDetails/SaveShiftEmployeeDetails", data, { withCredentials: true }).pipe(first());
+  }
+
+  saveSales(data: salesMaster){
+    return this.http.post(this.apiUrl + "/api/sales/SaveSales", data, { withCredentials: true }).pipe(first());
   }
 }

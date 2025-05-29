@@ -43,7 +43,7 @@ export const routes: Routes = [
                 component:ShiftEmployeeComponent,
             },
             {
-                path: 'SalesLogComponent',
+                path: 'SalesLog',
                 component:SalesLogComponent
             }
         ]

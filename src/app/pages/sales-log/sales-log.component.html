@@ -1,36 +1,63 @@
 <form #mainForm="ngForm" (ngSubmit)="submitForm()">
-    <div>
-        <p class="text-center">Customer Log Form</p>
-        <select class="form-select" aria-label="Default select example" [(ngModel)]="formData.shiftId" name="shiftId">
-            <option *ngFor="let shift of shiftData" [value]="shift.id">{{ shift.shiftName }}</option>
-            <option selected>Shift</option>
-        </select>
+  <button class="btn btn-secondary" type="button" routerLink="/salesList">Sales List</button>
+  <div>
+    <h3 class="text-center">Sales Log Form</h3>
+    <select class="form-select" style="margin-bottom: 10px;" aria-label="Default select example" [(ngModel)]="formData.shiftId" name="shiftId">
+      <option *ngFor="let shift of shiftData" [value]="shift.id">{{ shift.shiftName }}</option>
+      <option selected>Shift</option>
+    </select>
 
-        <select class="form-select" aria-label="Default select example" [(ngModel)]="formData.employeeId"
-            name="employeeId">
-            <option selected>Employee</option>
-            <option *ngFor="let emp of empData" [value]="emp.Id">{{ emp.Name }}</option>
-        </select>
+    <select class="form-select" aria-label="Default select example" [(ngModel)]="formData.employeeId" name="employeeId">
+      <option selected>Employee</option>
+      <option *ngFor="let emp of empData" [value]="emp.Id">{{ emp.Name }}</option>
+    </select>
+  </div>
+
+  <hr>
+
+  <div>
+
+    <h5>Select Your Gender here: </h5>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="radioDefault" id="Male" checked>
+      <label class="form-check-label" for="Male">
+        Male
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="radioDefault" id="Female">
+      <label class="form-check-label" for="Female">
+        Female
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="radioDefault" id="Custom">
+      <label class="form-check-label" for="Custom">
+        Custom
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="radioDefault" id="Others">
+      <label class="form-check-label" for="Others">
+        Others
+      </label>
     </div>
 
-    <hr>
+    <input class="form-control" type="time" style="margin-bottom: 10px;" placeholder="Time" [(ngModel)]="entry.time" name="time"
+      aria-label="readonly input example">
 
-    <div>
-        <input class="form-control" type="time" placeholder="Time" [(ngModel)]="entry.time" name="time"
-            aria-label="readonly input example">
-    
-        <input class="form-control" type="text" placeholder="Customer Name" [(ngModel)]="entry.salesName"
-            name="customerName" aria-label="readonly input example">
-    
-        <input class="form-control" type="text" placeholder="Problem" [(ngModel)]="entry.remarks" name="problem"
-            aria-label="readonly input example">
-    
-        <span class="btn btn-primary" type="submit" (click)="addEntry()">Button</span>
-    </div>
+    <input class="form-control" type="text" placeholder="Sales Name" [(ngModel)]="entry.salesName" name="customerName"
+      aria-label="readonly input example">
 
-    <hr>
+    <input class="form-control" type="text" style="margin-top: 10px; margin-bottom:10px;" placeholder="Remarks" [(ngModel)]="entry.remarks" name="problem"
+      aria-label="readonly input example">
 
-    <div *ngIf="formData.salesDetails.length > 0">
+    <span class="btn btn-primary" type="submit" (click)="addEntry()">Button</span>
+  </div>
+
+  <hr>
+
+  <div *ngIf="formData.salesDetails.length > 0">
     <h3>Entries</h3>
 
     <table class="table">
@@ -45,11 +72,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let e of formData.salesDetails; let i = index">
-          <th scope="row">{{i+1}}</th>
-          <td>{{ e.time }}</td>
+          <th scope="row">{{ i+1 }}</th>
+          <!-- <td>{{ e.time.hours +':'+ e.time.minutes}}</td> -->
+          <td>{{ e.time}}</td>
           <td>{{ e.salesName }}</td>
           <td>{{ e.remarks }}</td>
-          <td> <button class="btn btn-secondary" type="button" (click)="removeEntry()">Remove</button></td>
+          <td> <button class="btn btn-secondary" type="button" (click)="removeEntry(i)">Remove</button></td>
         </tr>
       </tbody>
     </table>
@@ -57,5 +85,7 @@
   </div>
 
   <button class="btn align-center" type="submit" [disabled]="formData.salesDetails.length === 0">Submit All</button>
+
+  <hr>
 
 </form>
