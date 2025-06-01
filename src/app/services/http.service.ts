@@ -81,4 +81,15 @@ export class HttpService {
   saveSales(data: salesMaster){
     return this.http.post(this.apiUrl + "/api/sales/SaveSales", data, { withCredentials: true }).pipe(first());
   }
+
+  getSales(){
+    return this.http.get(this.apiUrl + "/api/sales/GetSales", { withCredentials: true }).pipe(first());
+  }
+  deletesales(id: any){
+    return this.http.delete(this.apiUrl + `/api/sales/deleteSales/${id}`, { withCredentials: true }).pipe(first());
+  }
+
+  editSales(data: salesMaster){
+    return this.http.put(this.apiUrl + "/api/sales/updateSales", data, { withCredentials: true}).pipe(first());
+  }
 }

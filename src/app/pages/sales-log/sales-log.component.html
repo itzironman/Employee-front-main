@@ -1,8 +1,9 @@
 <form #mainForm="ngForm" (ngSubmit)="submitForm()">
-  <button class="btn btn-secondary" type="button" routerLink="/salesList">Sales List</button>
+  <button class="btn btn-secondary" type="button" (click)="onList()">Sales List</button>
   <div>
     <h3 class="text-center">Sales Log Form</h3>
-    <select class="form-select" style="margin-bottom: 10px;" aria-label="Default select example" [(ngModel)]="formData.shiftId" name="shiftId">
+    <select class="form-select" style="margin-bottom: 10px;" aria-label="Default select example"
+      [(ngModel)]="formData.shiftId" name="shiftId">
       <option *ngFor="let shift of shiftData" [value]="shift.id">{{ shift.shiftName }}</option>
       <option selected>Shift</option>
     </select>
@@ -14,43 +15,15 @@
   </div>
 
   <hr>
-
   <div>
-
-    <h5>Select Your Gender here: </h5>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="radioDefault" id="Male" checked>
-      <label class="form-check-label" for="Male">
-        Male
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="radioDefault" id="Female">
-      <label class="form-check-label" for="Female">
-        Female
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="radioDefault" id="Custom">
-      <label class="form-check-label" for="Custom">
-        Custom
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="radioDefault" id="Others">
-      <label class="form-check-label" for="Others">
-        Others
-      </label>
-    </div>
-
-    <input class="form-control" type="time" style="margin-bottom: 10px;" placeholder="Time" [(ngModel)]="entry.time" name="time"
-      aria-label="readonly input example">
+    <input class="form-control" type="time" style="margin-bottom: 10px;" placeholder="Time" [(ngModel)]="entry.time"
+      name="time" aria-label="readonly input example">
 
     <input class="form-control" type="text" placeholder="Sales Name" [(ngModel)]="entry.salesName" name="customerName"
       aria-label="readonly input example">
 
-    <input class="form-control" type="text" style="margin-top: 10px; margin-bottom:10px;" placeholder="Remarks" [(ngModel)]="entry.remarks" name="problem"
-      aria-label="readonly input example">
+    <input class="form-control" type="text" style="margin-top: 10px; margin-bottom:10px;" placeholder="Remarks"
+      [(ngModel)]="entry.remarks" name="problem" aria-label="readonly input example">
 
     <span class="btn btn-primary" type="submit" (click)="addEntry()">Button</span>
   </div>

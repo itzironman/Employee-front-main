@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpService } from '../../services/http.service';
 import { IEmployee, salesDetails, salesMaster, Shift } from '../../types/employee';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sales-log',
@@ -21,7 +22,7 @@ export class SalesLogComponent implements OnInit {
   shifts: salesMaster = new salesMaster();
 
 
-  constructor(private dataService: HttpService){
+  constructor(private dataService: HttpService, private route: Router){
     
   }
 
@@ -72,5 +73,8 @@ export class SalesLogComponent implements OnInit {
     this.dataService.getEmployee().subscribe((data:any) => {
       this.empData = data;
     })
+  }
+  onList(){
+    this.route.navigate(['/SalesList']);
   }
 }

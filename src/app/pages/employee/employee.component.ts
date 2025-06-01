@@ -69,7 +69,6 @@ this.updateEmp();
   editEmployee(employee: IEmployee){
     this.formData = employee;
     this.isFormOpen = true;
-    
   }
 
 updateEmp(){
@@ -80,7 +79,6 @@ updateEmp(){
       this.formData = new IEmployee();
       this.getLatestData();
       this.isEdit = false;
-      
     });
 }
 deleteEmp(id: number){
