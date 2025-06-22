@@ -21,9 +21,9 @@ export class SalesListComponent implements OnInit {
   }
   editSales(salesList: any) {
     this.route.navigate(['/SalesLog'],{queryParams:{id:salesList.id}});
-    this.dataService.getSales();
+    //salesList = 
     
-    //queryParams = 
+ 
   }
 
   // updateSales() {

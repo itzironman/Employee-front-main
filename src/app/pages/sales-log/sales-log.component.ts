@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpService } from '../../services/http.service';
 import { IEmployee, salesDetails, salesMaster, Shift } from '../../types/employee';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sales-log',
@@ -22,8 +22,14 @@ export class SalesLogComponent implements OnInit {
   shifts: salesMaster = new salesMaster();
 
 
-  constructor(private dataService: HttpService, private route: Router){
-    
+  constructor(private dataService: HttpService, private route: Router,private router:ActivatedRoute){
+      this.router.queryParamMap.subscribe(params => {
+        if(params.get('id')){
+         const value = params.get('id');
+        //  this.getDataById(value)
+        }
+
+  });
   }
 
   ngOnInit(): void {

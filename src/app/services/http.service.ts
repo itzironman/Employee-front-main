@@ -92,4 +92,8 @@ export class HttpService {
   editSales(data: salesMaster){
     return this.http.put(this.apiUrl + "/api/sales/updateSales", data, { withCredentials: true}).pipe(first());
   }
+
+  // getDataById(id: any){
+  //   return this.http.get(this.apiUrl + "", { withCredentials: true}).pipe.(first());
+  // }
 }
