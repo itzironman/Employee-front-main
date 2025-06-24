@@ -1,6 +1,4 @@
-
 <div>
-
     <div class="flex justify-between mb-6">
         <h1 class="text-xl font-semibold align-center">Sales List</h1>
         <button mat-flat-button (click)="back()">Back</button>
@@ -15,18 +13,18 @@
             </tr>
         </thead>
         <tbody>
-            
-       @for (item of salesList; track $index;) {
+
+            @for (item of salesList; track $index;) {
             <tr>
                 <td>{{item.serial}}</td>
                 <td>{{item.employeeName}}</td>
                 <td>{{item.shiftName}}</td>
                 <td class="flex gap-4">
                     <button mat-flat-button (click)="editSales(item)">Edit</button>
-                    <button mat-flat-button class="bg-red-500" (click)="deleteSales(item.Id)" >Delete</button>
+                    <button mat-flat-button class="bg-red-500" (click)="deleteSales(item.Id)">Delete</button>
                 </td>
             </tr>
-        }
+            }
         </tbody>
     </table>
 

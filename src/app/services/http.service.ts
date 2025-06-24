@@ -96,4 +96,17 @@ export class HttpService {
   // getDataById(id: any){
   //   return this.http.get(this.apiUrl + "", { withCredentials: true}).pipe.(first());
   // }
+  getSkills(){
+    return this.http.get(this.apiUrl + "/api/skills/GetAll", { withCredentials: true }).pipe(first());
+  }
+
+  getQualifications(){
+    return this.http.get(this.apiUrl + "/api/qualification/Get", { withCredentials: true }).pipe(first());
+  }
+  getExp(){
+    return this.http.get(this.apiUrl + "/api/experiences/Get", { withCredentials: true }).pipe(first());
+  }
+  getDuty(){
+    return this.http.get(this.apiUrl + "/api/Duty/GetAllDuties", { withCredentials: true }).pipe(first());
+  }
 }

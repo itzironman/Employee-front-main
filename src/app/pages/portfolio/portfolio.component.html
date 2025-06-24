@@ -32,6 +32,7 @@
         <p>Duration: February, 2025 - Present</p>
         <h5>Duties and Responsibilities</h5>
         <ul>
+            <!-- <li> {{duty}} </li> -->
             <li>Learning and understanding the companys development processes, tools and technologies.</li>
             <li>Assisting senior developers with coding, debugging, and other software-related tasks.</li>
             <li>Writing simple, clean, and maintainable code as directed by more experienced team members.</li>
@@ -71,6 +72,7 @@
         <p>Duration: January, 2022 - December, 2022</p>
         <h5>Duties and Responsibilities</h5>
         <ul>
+            <!-- <li> {{Duty.duty}} </li> -->
             <li>Network Configure: Configuration WAN, LAN part in client end devices, Software installation.</li>
             <li>Network Monitoring: MikroTik Dude, Observium, PRTG, MRTG tools.</li>
             <li>Network Planning: Ring topology, Mesh Topology, Tree topology used in different scenarios for some practical tasks.</li>
@@ -140,34 +142,16 @@
             </tr>
             </thead>
             <tbody>
+                @for(item of qualifications; track $index;){
                 <tr>
-                    <td>B.Sc</td>
-                    <td>Computer Science and Engineering</td>
-                    <td>East West University</td>
-                    <td>2.30</td>
-                    <td>2018</td>
-                    <td>Dhaka</td>
+                    <td> {{item.certificate}} </td>
+                    <td> {{item.subject}} </td>
+                    <td> {{item.institute}} </td>
+                    <td> {{item.result}} </td>
+                    <td> {{item.passingYear}} </td>
+                    <td> {{item.board}} </td>
                 </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <td>HSC</td>
-                    <td>Science</td>
-                    <td>Govt. Azzizul Haque College</td>
-                    <td>4.00</td>
-                    <td>2012</td>
-                    <td>Rajshahi</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <td>SSC</td>
-                    <td>Science</td>
-                    <td>Hat Sajapur High School</td>
-                    <td>5.00</td>
-                    <td>2010</td>
-                    <td>Rajshahi</td>
-                </tr>
+            }
             </tbody>
         </table>
     </section>
@@ -180,6 +164,19 @@
         <p>LinkedIn: <a href="https://www.linkedin.com/in/zahid-hasan-rajib-a09209143/"
                 target="_blank">linkedin.com/in/zahid-hasan-rajib-a09209143/</a></p>
     </section>
+
+    <div *ngFor="let e of exp" class="experience-card">
+        <h3>{{ e.companyName }}</h3>
+        <p>{{ e.address }}</p>
+        <p><strong>Position Held:</strong> {{ e.designation }}</p>
+        <p><strong>Duration:</strong> {{ e.duration }}</p>
+    
+        <p><strong>Duties and Responsibilities:</strong></p>
+        <ul>
+            <li *ngFor="let duty of e.duties">{{ duty }}</li>
+        </ul>
+    </div>
+
 
     <!-- <footer>
         &copy; 2025 Zahid Hasan. All rights reserved.

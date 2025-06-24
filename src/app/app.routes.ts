@@ -10,6 +10,7 @@ import { SalesLogComponent } from './pages/sales-log/sales-log.component';
 import { SalesListComponent } from './pages/sales-list/sales-list.component';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
 import { CalculatorComponent } from './pages/calculator/calculator.component';
+import { SkillsComponent } from './pages/skills/skills.component';
 
 export const routes: Routes = [
     {
@@ -40,6 +41,10 @@ export const routes: Routes = [
             {
                 path:'designation',
                 component:DesignationComponent,
+            },
+            {
+                path: 'Skills',
+                component: SkillsComponent,
             },
             {
                 path: 'shiftEmployee',

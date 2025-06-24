@@ -1,0 +1,28 @@
+<div>
+    <div class="flex justify-between mb-6">
+        <h1 class="text-xl font-semibold align-center">Skills List</h1>
+        <button mat-flat-button class="bg-green-500" (click)="addSkills()">Add Skills</button>
+        <!-- <button mat-flat-button (click)="back()"></button> -->
+    </div>
+    <table class="table-auto border-collapse">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Skill Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(item of skills; track $index;){
+                <tr>
+                    <td>{{item.serial}}</td>
+                    <td>{{item.skill}}</td>
+                    <td class="flex gap-4">
+                        <button mat-flat-button class="bg-gray-500" (click)="editSkills(item)">Edit</button>
+                        <button mat-flat-button class="bg-red-500" (click)="deleteSkills(item.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
